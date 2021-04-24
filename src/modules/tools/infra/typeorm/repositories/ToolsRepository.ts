@@ -34,6 +34,10 @@ class ToolsRepository implements IToolsRepository {
 
     return tool;
   }
+
+  getTools(): Promise<Tool[]> {
+    return this.repository.find();
+  }
 }
 
 export { ToolsRepository };

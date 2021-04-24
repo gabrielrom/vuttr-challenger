@@ -30,6 +30,10 @@ class ToolsRepositoryInMemory implements IToolsRepository {
 
     return tool;
   }
+
+  async getTools(): Promise<Tool[]> {
+    return this.tools;
+  }
 }
 
 export { ToolsRepositoryInMemory };
