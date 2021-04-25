@@ -25,6 +25,12 @@ class ToolsRepositoryInMemory implements IToolsRepository {
     return tool;
   }
 
+  async deleteTool(id: string): Promise<void> {
+    const toolIndex = this.tools.findIndex(tool => tool.id === id);
+
+    this.tools.splice(toolIndex, 1);
+  }
+
   async getTools(tag?: string): Promise<Tool[]> {
     if (tag) {
       return this.tools.filter(tool => tool.tags.includes(tag));
@@ -35,6 +41,12 @@ class ToolsRepositoryInMemory implements IToolsRepository {
 
   async findByTitle(title: string): Promise<Tool> {
     const tool = this.tools.find(tool => tool.title === title);
+
+    return tool;
+  }
+
+  async findById(id: string): Promise<Tool> {
+    const tool = this.tools.find(tool => tool.id === id);
 
     return tool;
   }

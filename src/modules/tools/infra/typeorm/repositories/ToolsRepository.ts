@@ -29,6 +29,10 @@ class ToolsRepository implements IToolsRepository {
     return tool;
   }
 
+  async deleteTool(id: string): Promise<void> {
+    await this.repository.delete(id);
+  }
+
   async getTools(tag?: string): Promise<Tool[]> {
     const tools = await this.repository.find();
 
@@ -42,6 +46,12 @@ class ToolsRepository implements IToolsRepository {
 
   async findByTitle(title: string): Promise<Tool> {
     const tool = await this.repository.findOne({ title });
+
+    return tool;
+  }
+
+  async findById(id: string): Promise<Tool> {
+    const tool = await this.repository.findOne(id);
 
     return tool;
   }
