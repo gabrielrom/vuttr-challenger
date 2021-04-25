@@ -29,14 +29,21 @@ class ToolsRepository implements IToolsRepository {
     return tool;
   }
 
+  async getTools(tag?: string): Promise<Tool[]> {
+    const tools = await this.repository.find();
+
+    if (tag) {
+      const toolsByTag = tools.filter(tool => tool.tags.includes(tag));
+      return toolsByTag;
+    }
+
+    return tools;
+  }
+
   async findByTitle(title: string): Promise<Tool> {
     const tool = await this.repository.findOne({ title });
 
     return tool;
-  }
-
-  getTools(): Promise<Tool[]> {
-    return this.repository.find();
   }
 }
 

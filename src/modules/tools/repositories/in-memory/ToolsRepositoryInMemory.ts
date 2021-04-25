@@ -25,14 +25,18 @@ class ToolsRepositoryInMemory implements IToolsRepository {
     return tool;
   }
 
+  async getTools(tag?: string): Promise<Tool[]> {
+    if (tag) {
+      return this.tools.filter(tool => tool.tags.includes(tag));
+    }
+
+    return this.tools;
+  }
+
   async findByTitle(title: string): Promise<Tool> {
     const tool = this.tools.find(tool => tool.title === title);
 
     return tool;
-  }
-
-  async getTools(): Promise<Tool[]> {
-    return this.tools;
   }
 }
 
