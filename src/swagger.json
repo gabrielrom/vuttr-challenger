@@ -1,0 +1,201 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Vuttr Documentation",
+    "description": "An application to save the best tools that a developer can have!",
+    "version": "1.0.0",
+    "contact": {
+      "name": "Vuttr Support",
+      "email": "contact@vuttr.com"
+    }
+  },
+  "paths": {
+    "/tools": {
+      "post": {
+        "tags": ["Tool"],
+        "summary": "Create a new tool",
+        "description": "This route creates a new tool.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "title": { "type": "string" },
+                  "description": { "type": "string" },
+                  "link": { "type": "string" },
+                  "tags": { "type": "string[]" }
+                },
+                "example": {
+                  "title": "Swagger",
+                  "description": "tool to create documentation of a application fast!.",
+                  "link": "https://swagger.io/",
+                  "tags": ["documentation", "docs"]
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/definitions/Tool"
+                },
+                "example": {
+                  "id": "832c5d62-e8d0-480e-bee3-f84d7f6e00fc",
+                  "title": "Swagger",
+                  "description": "tool to create documentation of a application fast!.",
+                  "link": "https://swagger.io/",
+                  "tags": ["documentation", "docs"]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error - Tool is arealdy exists",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/definitions/ErrorMessage"
+                },
+                "example": {
+                  "message": "This tool is already exists!"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": ["Tool"],
+        "summary": "List all tools",
+        "responses": {
+          "200": {
+            "description": "returns an array of Tools",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "$ref": "#/definitions/Tool"
+                  }
+                },
+                "example": {
+                  "id": "832c5d62-e8d0-480e-bee3-f84d7f6e00fc",
+                  "title": "Swagger",
+                  "description": "tool to create documentation of a application fast!.",
+                  "link": "https://swagger.io/",
+                  "tags": [
+                    "documentation",
+                    "docs"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/tools?tag=docs": {
+      "get": {
+        "tags": ["Tool"],
+        "summary": "List all tools by a tag",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "tag",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "A string tag of a tool"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "$ref": "#/definitions/Tool"
+                  }
+                },
+                "example": {
+                  "id": "832c5d62-e8d0-480e-bee3-f84d7f6e00fc",
+                  "title": "Swagger",
+                  "description": "tool to create documentation of a application fast!.",
+                  "link": "https://swagger.io/",
+                  "tags": [
+                    "documentation",
+                    "docs"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/tools/{tool_id}": {
+      "delete": {
+        "tags": ["Tool"],
+        "summary": "Delete a tool",
+        "description": "This route delete a tool by the tool_id",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "tool_id",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "A tool id"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The tool was deleted successfuly"
+          },
+          "404": {
+            "description": "Error - This tool does not exists!",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/definitions/ErrorMessage"
+                },
+                "example": {
+                  "message": "This tool does not exists!"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Tool": {
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "format": "uuid" },
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "link": { "type": "string" },
+        "tags": { "type": "string array" }
+      }
+    },
+    "ErrorMessage": {
+      "type": "object",
+      "properties": {
+        "message": { "type": "string" }
+      }
+    }
+  }
+}

@@ -13,7 +13,7 @@ class DeleteToolController {
       tool_id: id,
     });
 
-    return response.send();
+    return response.status(204).send();
   }
 }
 
