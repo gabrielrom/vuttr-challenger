@@ -2,7 +2,7 @@
 <img src="./assets/tool-icon.png" width="200px"/>
 </p>
 
-<h1 align="center">Vuttr 🧰</h1>
+<h1 align="center">Vuttr 🔥</h1>
 <p>
   <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
   <a href="#" target="_blank">
