@@ -1,5 +1,5 @@
 <p align="center">
-<img src="./assets/tool-icon.jpg" width="200px"/>
+<img src="./assets/tool-icon.png" width="200px"/>
 </p>
 
 <h1 align="center">Vuttr 🧰</h1>
