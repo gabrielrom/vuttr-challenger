@@ -1,5 +1,5 @@
 <p align="center">
-<img src="./assets/tool-icon.png" width="200px"/>
+<img src="./assets/tool-icon.jpg" width="200px"/>
 </p>
 
 <h1 align="center">Vuttr 🧰</h1>
@@ -15,8 +15,6 @@
 
 > Vuttr (Very Useful Tools to Remember) is an application to save the best tools that a developer can have!
 
-## Usage
-> This application is using Docker and Docker Compose to create his containers, so you dont need to have installed on your computer node and postgres.
 
 ## Prerequisites
 
@@ -24,25 +22,23 @@
 * Docker Compose
 * yarn
 
+## Usage
+This application is using Docker and Docker Compose to create his containers, so you dont need to have installed on your computer node and postgres.
+
 ## Run application
 ```sh
 docker-compose up -d
 ```
 
-## Ports
-
-* The application is running on port 3000
-* The database is running on port 5432
-
+## Run tests
+```sh
+yarn test
+```
 
 ## Documentation
 * http://localhost:3000/api-docs
 
-## Run tests
 
-```sh
-yarn test
-```
 
 ## Author
 
