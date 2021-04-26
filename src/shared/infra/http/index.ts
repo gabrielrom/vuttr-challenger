@@ -11,7 +11,7 @@ import createConnection from '../typeorm';
 import globalError from './middlewares/globalError';
 import { router } from './routes';
 
-createConnection('localhost');
+createConnection();
 
 const app = express();
 

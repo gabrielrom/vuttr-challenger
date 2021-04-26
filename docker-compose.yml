@@ -12,7 +12,19 @@ services:
       - POSTGRES_DB=vuttr
     volumes: 
       - pgdata:/data/postgres
-    
+  
+  app: 
+    build: .
+    container_name: vuttr
+    ports: 
+      - 3000:3000
+    volumes: 
+      - .:/usr/app
+    links: 
+      - database
+    depends_on: 
+      - database
+      
 volumes: 
   pgdata:
     driver: local
